@@ -8,7 +8,7 @@ The included project itself should be used as a reference, to review how we set 
 You can also get a more in-depth view of this in our [development standards file](https://docs.google.com/document/d/1lGfF2MJtI1-hH_61b8_Li7eq-DmtjnVv-tBghdKJmyg/edit?usp=sharing).
 
 # Steps
-Pull in this repo to review our development standards, along with checking [this file](https://docs.google.com/document/d/1lGfF2MJtI1-hH_61b8_Li7eq-DmtjnVv-tBghdKJmyg/edit?usp=sharing).
+Pull in this repo. Review its files, along with [this link](https://docs.google.com/document/d/1lGfF2MJtI1-hH_61b8_Li7eq-DmtjnVv-tBghdKJmyg/edit?usp=sharing) to check our front-end dev standards.
 
 Visit [this link](https://www.dropbox.com/sh/dltgsks9m4y5x3v/AABULShwYX8kuFD-Ro-78gQPa?dl=0) and download the PSD files there. These files are the large and small format comps for the page you'll be working on.
 
