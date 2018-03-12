@@ -12,17 +12,19 @@ Pull in this repo. Review its files, along with [this link](https://docs.google.
 
 Visit [this link](https://www.dropbox.com/sh/dltgsks9m4y5x3v/AABULShwYX8kuFD-Ro-78gQPa?dl=0) and download the PSD files there. These files are the large and small format comps for the page you'll be working on.
 
-Code the page. This needs to be a pure HTML/CSS/JS page. The only hard requirements are:
+Code the page. This needs to be a pure HTML/CSS/JS page. Use our standards as a base, but work as you feel comfortable/know how to work. The most important thing is that your code is clean, modular and extensible.
+
+The only requirements, as far as libraries and tools go, are:
 1. [Bootstrap v4](https://getbootstrap.com/) (You don't need to use the whole library if you don't need it)
 2. SASS
 3. [Slick Carousel](http://kenwheeler.github.io/slick/) (For the pricing columns carousel on small formats)
 4. A task runner/build tool (You can use whichever you're comfortable with here, but, as you can see, we use Gulp)
 
-There are only two JS interactions on the page that need to be coded:
+You can use any other tools/libraries you want that can help you, but try not to depend too much on them.
+
+There are only two JS interactions on the page that need to be coded are:
 1. The menu collapse on small formats.
 2. The pricing columns switch to a carousel on small formats.
-
-You can use any other plugins/libraries you want that can help you, but try not to depend too much on them.
 
 After you're done coding the site, zip up your files and send them over to us. Please include your `package.json` file and your `gulpfile.js/Gruntfile.js/whatevertheheckyoureusing.js` file.
 
