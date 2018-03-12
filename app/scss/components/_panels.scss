@@ -1,0 +1,33 @@
+.panel-wrap {
+  position: relative;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 6px 9px 0 rgba(0,0,0,.18);
+  z-index: 99;
+  left: -9999px;
+  clip: rect(0,0,0,0);
+  opacity: 0;
+  @include anim(opacity, .35s);
+  
+  &.is-open {
+    left: 0;
+    clip: auto;
+    opacity: 1;
+  }
+  
+  @include breakpoint-to(lg) {
+    &--lg {
+      display: none;
+    }
+  }
+  
+  @include breakpoint-from(lg) {
+    &--sm {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,3 @@
+@each $color, $value in $app-colors {
+  @include color-variant($color, $value);
+}

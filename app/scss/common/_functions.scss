@@ -1,0 +1,25 @@
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+@function app-color($key: "detail") {
+  @return map-get($app-colors, $key);
+}
+
+@function color-level($color-name: "detail", $level: 0) {
+  $color: app-color($color-name);
+  $color-base: if($level > 0, #000, #fff);
+
+  @if $level < 0 {
+    @return mix($color-base, $color, $level * -1 * $color-interval);
+  }
+  @else {
+    @return mix($color-base, $color, $level * $color-interval);
+  }
+}
+
+/*--------------------------------------------------------------
+# Icons
+--------------------------------------------------------------*/
+@function icons($key: "user") {
+  @return map-get($icons, $key);
+}

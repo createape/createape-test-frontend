@@ -1,0 +1,86 @@
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+$info-bar-padding-y: 1rem;
+$info-bar-padding-x: 1.25rem;
+$info-bar-item-h-space: 1em;
+$info-bar-item-v-space: .25rem;
+$info-bar-caret-width: 1rem;
+
+/*--------------------------------------------------------------
+# Rule-sets
+--------------------------------------------------------------*/
+.info-bar {
+  background-color: $blue-secondary;
+  padding: $info-bar-padding-y $info-bar-padding-x;
+  
+  @include breakpoint-from(md) {
+    padding: ($info-bar-padding-y * 1.25) ($info-bar-padding-x * 1.2);
+  }
+}
+
+.info-bar__toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+  @include breakpoint-to(xl) {
+    justify-content: flex-start;
+    text-align: left;
+    flex-wrap: wrap;
+    padding-right: ($info-bar-caret-width * 3);
+    
+    &::after {
+      content: icons("arrow-down");
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: $info-bar-caret-width;
+      transform: translateY(-50%);
+      font-family: $icon-font;
+      font-size: $info-bar-caret-width;
+      width: $info-bar-caret-width;
+    }
+  }
+  
+  @include breakpoint-to(sm) {
+    font-weight: normal;
+  }
+}
+
+.info-bar__item {
+  @include breakpoint-to(xl) {
+    flex-basis: 25%;
+    padding-right: $info-bar-item-h-space;
+    padding-bottom: $info-bar-item-v-space;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @include breakpoint-to(sm) {
+    flex-basis: 50%;
+    
+    &--type,
+    &--vin,
+    &--time {
+      display: none;
+    }
+    
+    &--stock {
+      order: 1;
+    }
+    
+    &--make {
+      order: 2;
+    }
+    
+    &--inv {
+      order: 3;
+    }
+    
+    &--ro {
+      order: 4;
+    }
+  }
+}

@@ -1,0 +1,424 @@
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+$work-order-content-padding-y: 1.875rem;
+$work-order-content-padding-x: 1.25rem;
+$work-order-table-cell-sm: 7%;
+$work-order-table-cell-md: 9.5%;
+$work-order-table-cell-lg: 14.5%;
+$work-order-table-cell-xl: 20%;
+$work-order-icon-size: 1.75rem;
+
+/*--------------------------------------------------------------
+# Rule-sets
+--------------------------------------------------------------*/
+.work-order-total--header {
+  color: $white;
+  margin-left: auto;
+  
+  @include breakpoint-from(lg) {
+    display: none;
+  }
+}
+
+[class*="work-order-cell--"] {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  .block {
+    & > * {
+      margin-right: .125rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.work-order-cell--label {
+  flex-basis: ($work-order-table-cell-xl + $work-order-table-cell-sm);
+  padding-left: 0;
+  text-transform: uppercase;
+  
+  @include breakpoint-to(mg) {
+    flex-basis: (($work-order-table-cell-xl + $work-order-table-cell-sm) - 3);
+  }
+}
+
+.work-order-cell--accept {
+  flex-basis: $work-order-table-cell-sm;
+
+  & > .inner {
+    justify-content: center;
+  }
+
+  [class^="icon-"]:before,
+  [class*=" icon-"]:before {
+    font-size: $work-order-icon-size;
+    line-height: 1.15em;
+    width: 1.15em;      
+  }
+  
+  .table--mini & {
+    flex-basis: 6%;
+  }
+}
+
+.work-order-cell--svc {
+  flex-basis: $work-order-table-cell-xl;
+  
+  & > .inner {
+    justify-content: space-between;
+  }
+  
+  @include breakpoint-to(mg) {
+    flex-basis: ($work-order-table-cell-xl - 3);
+  }
+  
+  .table--mini & {
+    flex-basis: 30%;
+  }
+}
+
+.work-order-cell--hrs {
+  flex-basis: $work-order-table-cell-lg;
+  
+  & > .inner {
+    justify-content: space-between;
+  }
+}
+
+.work-order-cell--labor {
+  flex-basis: $work-order-table-cell-lg;
+  
+  & > .inner {
+    justify-content: space-between;
+  }
+}
+
+.work-order-cell--parts {
+  flex-basis: $work-order-table-cell-lg;
+  
+  & > .inner {
+    justify-content: space-between;
+  }
+}
+
+.work-order-cell--total {
+  flex-basis: $work-order-table-cell-md;
+  
+  :not(.table__row--header) > & {
+    background-color: color-level(base, -6.9);
+    color: $white;
+    
+    & > .inner {
+      justify-content: center;
+    }
+  }
+  
+  .table__row--muted > & {
+    background-color: color-level(muted, 7);
+  }
+}
+
+.work-order-cell--act {
+  flex-basis: $work-order-table-cell-xl;
+  
+  & > .inner {
+    align-items: stretch;
+  }
+  
+  .btn {
+    padding-right: .65rem;
+    padding-left: .65rem;
+    margin-right: .3125rem;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    &:not(.btn--border) {
+      flex-grow: 1;
+    }
+  }
+  
+  .table__row--footer & {
+    padding-right: 0;
+  }
+  
+  @include breakpoint-to(mg) {
+    flex-basis: ($work-order-table-cell-xl + 3);
+  }
+}
+
+.work-order-cell--desc {
+  flex-basis: 20.5%;
+}
+
+.work-order-breakdown {
+  .collapsible__header {
+    .btn,
+    .print-link {
+      display: none;
+      opacity: 0;
+      @include anim(all, .25s);
+    }
+
+    .print-link {
+      font-size: $collapsible-print-font-size;
+      color: $collapsible-bg-color;
+      text-decoration: underline;
+      margin-left: auto;
+
+      [class^="icon-"]:before,
+      [class*=" icon-"]:before {
+        font-size: $collapsible-print-icon-size;
+        width: 1.25em;
+        margin-left: .325rem;
+        vertical-align: middle;
+      }
+    }
+
+    &.is-open {
+      .btn,
+      .print-link {
+        display: inline-block;
+        opacity: 1;
+      }
+    }
+  }
+  
+  .btn-group {
+    .btn {
+      font-size: .875rem;
+    }
+  }
+  
+  @include breakpoint-to(lg) {
+    padding: $work-order-content-padding-y $work-order-content-padding-x ($work-order-content-padding-y / 2);
+    
+    .table__row--header,
+    .table__row--footer,
+    .table__cell {
+      display: none;
+    }
+    
+    .table__row--content {
+      border: 0;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.12);
+      font-size: .875rem;
+      margin-bottom: .3125rem;
+      background-color: $table-bg-color;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .table__cell {
+        padding: 0;
+        border: 0;
+        
+        .checkbox {
+          display: none;
+        }
+      }
+      
+      .work-order-cell--svc {
+        display: block;
+        flex-basis: 43%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        
+        .text {
+          padding-left: 1rem;
+          line-height: 1;
+
+          &::before {
+            @include caret('icon');
+          }
+        }
+      }
+      
+      .work-order-cell--act {
+        display: block;
+        flex-basis: 57%;
+        
+        .btn {
+          margin: 0;
+          padding-right: .5rem;
+          padding-left: .5rem;
+          
+          &--border {
+            border-top: 0;
+            border-bottom: 0;
+            border-right: 0;
+            font-size: 1.0625rem;
+            padding-right: .75rem;
+            padding-left: .75rem;
+            border-color: color-level(muted, 0.7);
+            
+            &:last-child {
+              border-right: 1px solid color-level(muted, 0.7);
+            }
+          }
+        }
+      }
+    }
+    
+    .collapsible__header.is-open {
+      .btn,
+      .print-link {
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+  
+  @include breakpoint-from(lg) {
+    .collapsible__content {
+      margin-bottom: -#{$collapsible-padding-y};
+    }
+    
+    .btn-group {
+      display: none;
+    }
+  }
+}
+
+.work-order--totals {
+  margin-top: ($collapsible-v-spacing * .25);
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,.14);
+  
+  .table__row--footer {
+    padding-right: $collapsible-padding-x;
+    padding-left: $collapsible-padding-x;
+    border: 0;
+    display: flex;
+    
+    @include breakpoint-to(lg) {
+      padding: ($collapsible-header-padding-y * 1.2) $collapsible-header-padding-x;
+    }
+  }
+  
+  .table__cell {
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+    display: block;
+    
+    @include breakpoint-to(lg) {
+      border: 0;
+      padding: 0;
+      
+      &:not(.work-order-cell--label) {
+        display: none;
+      }
+    }
+  }
+  
+  .work-order-cell--label {
+    font-size: 1.25rem;
+    font-weight: 900;
+    
+    @include breakpoint-to(lg) {
+      font-size: 1.125rem;
+      flex-basis: 100%;
+      
+      .text {
+        padding-left: 1em;
+        
+        &::before {
+          @include caret('triangle');
+        }
+      }
+    }
+  }
+  
+  .work-order-total--header {
+    color: $black;
+    margin-left: auto;
+  }
+  
+  @include breakpoint-to(lg) {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12);
+  }
+  
+  @include breakpoint-from(sm) {
+    margin-top: ($collapsible-v-spacing * .4);
+  }
+  
+  @include breakpoint-from(md) {
+    margin-top: ($collapsible-v-spacing * .5);
+  }
+  
+  @include breakpoint-from(xl) {
+    margin-top: ($collapsible-v-spacing * .7);
+  }
+  
+  @include breakpoint-from(mg) {
+    margin-top: $collapsible-v-spacing;
+  }
+}
+
+.work-order--actions {
+  margin-top: 1.875rem;
+  
+  & > :last-child {
+    margin-bottom: 0;
+  }
+  
+  @include breakpoint-from(lg) {
+    display: none;
+  }
+}
+
+.service-search {
+  .popup__header {
+    & > * {
+      margin-right: 1.625rem;
+    
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    
+    .form-field {
+      font-size: 1.5rem;
+      border-color: $white;
+      @include input-ph(app-color(muted));
+    }
+  }
+  
+  .table--mini {
+    .checkbox {
+      font-size: .85rem;
+    }
+
+    .form-field {
+      border-color: color-level(muted, 0.7);
+      padding: .375rem .625rem;
+      background-color: transparent;
+      
+      &:focus {
+        border-color: color-level(detail, -10.8);
+        outline: 0;
+      }
+    }
+    
+    .table__row--content {
+      border-color: color-level(muted, -6);
+
+      &.is-selected {
+        background-color: color-level(muted, -6);
+        
+        .work-order-cell--svc {
+          font-weight: 900;
+        }
+        
+        .form-field {
+          border-color: color-level(muted, 1.7);
+        }
+      }
+    }
+  }
+}

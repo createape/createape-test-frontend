@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Work Order | CA Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="dist/styles/app.css">
+    
+    <!-- Async Google Font call -->
+    <script>
+    WebFontConfig = {
+      google: {
+        families: ['Roboto:300,400,400i,500,700,900']
+      }
+    };
+
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+    })(document);
+    </script>
+  </head>
+  <body>
+    <div id="app" class="page" role="document">
+      <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+      <![endif]-->
+
+      <header id="masthead" class="banner" role="banner">
+        <div class="inner">
+          <div class="banner__block banner__block--l">
+            <nav id="navbar-main" class="navbar navbar--main">
+              <button id="toggle-main-menu" class="navbar-toggle" type="button" aria-controls="menu-main" aria-expanded="false" aria-label="Toggle main menu">
+                <div class="navbar-toggle__icon hamburger">
+                  <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                  </div>
+                </div>
+                <div class="navbar-toggle__text">MENU</div>
+              </button>
+            </nav>
+          </div>
+          
+          <a href="/" class="brand">
+            <img src="dist/img/logo.png" alt="logo">
+          </a>
+          
+          <div class="banner__block banner__block--r">
+            <div class="search-bar" role="search">
+              <form action="#" class="form form--search" method="post">
+                <div class="form__item form__item--search">
+                  <input type="search" class="form-field" placeholder="Search">
+                </div>
+              </form>
+            </div>
+            <nav id="navbar-user" class="navbar navbar--user">
+              <button id="toggle-user-menu" class="navbar-toggle" type="button" aria-controls="menu-user" aria-expanded="false" aria-label="Toggle user menu">
+                <div class="navbar-toggle__icon">
+                  <i class="icon-user"></i><span class="screen-reader-text">User Menu</span>
+                </div>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </header><!-- /.banner -->
+      
+      <main id="content" class="content work-order">
+        <div class="container">
+          <div class="info-bar content__block">
+            <button type="button" id="toggle-info-bar" class="btn btn--lg btn--detail info-bar__toggle" aria-controls="vehicle-select" aria-expanded="false" aria-label="Toggle vehicle selection">
+              <span class="info-bar__item info-bar__item--inv">Inv# ERI12345</span>
+              <span class="info-bar__item info-bar__item--type">Inspection Type</span>
+              <span class="info-bar__item info-bar__item--stock">Stock# 12345</span>
+              <span class="info-bar__item info-bar__item--make">2018 Jeep Grand Cherokee</span>
+              <span class="info-bar__item info-bar__item--vin">VIN 12345678965482400 </span>
+              <span class="info-bar__item info-bar__item--ro">RO# 789456</span>
+              <span class="info-bar__item info-bar__item--time">Time in Recon: 4.7 days</span>
+            </button>
+          </div><!-- /.info-bar -->
+          
+          <nav class="steps content__block">
+            <div class="inner">
+              <div class="steps-indicator">
+                <a href="#" class="steps__step">
+                  <div class="inner">
+                    <i class="step__icon icon-eye"></i>
+                    <span class="step__text">INSPECTION DEPT</span>
+                  </div>
+                </a>
+                <a href="#" class="steps__step is-active">
+                  <div class="inner">
+                    <i class="step__icon icon-cog"></i>
+                    <span class="step__text">MECHANICAL DEPT</span>
+                  </div>
+                  <img src="dist/img/step-active.png" class="step-active-marker" alt="Car icon">
+                </a>
+                <a href="#" class="steps__step">
+                  <div class="inner">
+                    <i class="step__icon icon-wrench"></i>
+                    <span class="step__text">DETAIL DEPT</span>
+                  </div>
+                </a>
+              </div>
+              <div class="steps__final">
+                <a href="#" class="btn btn--callout">SEND FOR APPROVAL</a>
+              </div>
+            </div>
+          </nav><!-- /.step-indicator -->
+          
+          <div class="work-order-breakdown content__block">
+            <div class="collapsibles">
+              <section class="work-order-mechanical collapsible">
+                <nav class="sidebar-nav">
+                  <a href="#" class="sidebar-nav__item panel__toggle" data-target="#wo-inspection-panel" aria-expanded="false" aria-controls="wo-inspection-panel" role="button">INSPECTION</a>
+                  <a href="#" class="sidebar-nav__item panel__toggle" data-target="#wo-photos-panel" aria-expanded="false" aria-controls="wo-photos-panel" role="button">PHOTOS</a>
+                  <a href="#" class="sidebar-nav__item panel__toggle" data-target="#wo-notes-panel" aria-expanded="false" aria-controls="wo-notes-panel" role="button">NOTES</a>
+                  <a href="#" class="sidebar-nav__item panel__toggle" data-target="#wo-actions-panel" aria-expanded="false" aria-controls="wo-actions-panel" role="button">ACTIONS</a>
+                </nav><!-- /.sidebar-nav -->
+                
+                <div id="wo-actions-panel" class="panel panel--lg actions-nav-panel">
+                  <ul class="list-nav" role="menu">
+                    <li class="list-nav__item">
+                      <a href="#" class="subnav__toggle">Send to another dept</a>
+                      <ul class="list-nav__subnav">
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Inspection</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Parts Pricing</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Mechanical</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Preferred Package</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Interior Repair</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">PDR</a>
+                        </li>
+                        <li class="list-nav__item subnav__item">
+                          <a href="#">Body Shop</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="list-nav__item">
+                      <a href="#">Recall Loookup</a>
+                    </li>
+                    <li class="list-nav__item">
+                      <a href="#">View Activity</a>
+                    </li>
+                    <li class="list-nav__item">
+                      <a href="#">View Stats</a>
+                    </li>
+                    <li class="list-nav__item">
+                      <a href="#">Put Job on Hold</a>
+                    </li>
+                    <li class="list-nav__item">
+                      <a href="#">Delete this Job</a>
+                    </li>
+                  </ul>
+                </div><!-- /.sidebar-nav-panel -->
+                
+                <header class="collapsible__header is-open">
+                  <h2 class="collapsible__toggle" data-target="#work-order-mechanical" aria-expanded="true" aria-controls="work-order-mechanical" role="button">Mechanical</h2>
+                  <button type="button" class="btn btn--xs btn--action add-service--toggle">ADD SERVICE</button>
+                  <a href="#" class="print-link" role="button">Print<i class="icon-print"></i></a>
+                  <h3 class="work-order-total--header">$620.00</h3>
+                </header>
+                <div id="work-order-mechanical" class="collapsible__content">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn--dark panel__toggle" data-target="#wo-actions-panel-m" aria-expanded="false" aria-controls="wo-actions-panel-m"><i class="icon-ellips"></i>ACTIONS</button>
+                    <button type="button" class="btn btn--action add-service--toggle"><i class="icon-plus-circle"></i>ADD SERVICE</button>
+                  </div>
+
+                  <div class="work-order-table table">
+                    <div class="table__row table__row--header">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner">Accept</div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">Service</div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">Labor Hours</div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">Labor</div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">Parts</div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">Total</div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner"></div>
+                      </div>
+                    </div><!-- /.table__row--header -->
+
+                    <div class="table__row table__row--content">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-mech-rear-brakes" aria-expanded="false" aria-controls="wo-mech-rear-brakes">Rear Brakes</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-rear-brakes-svc" name="wo-mech-rear-brakes-svc">
+                            <label for="wo-mech-rear-brakes-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.5</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-rear-brakes-hrs" name="wo-mech-rear-brakes-hrs">
+                            <label for="wo-mech-rear-brakes-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-rear-brakes-labor" name="wo-mech-rear-brakes-labor">
+                            <label for="wo-mech-rear-brakes-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-rear-brakes-parts" name="wo-mech-rear-brakes-parts">
+                              <label for="wo-mech-rear-brakes-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-disabled.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h3>$100.00</h3>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          <button type="button" class="btn btn--sm btn--callout">NOT COMPLETED</button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--content">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-mech-front-brakes" aria-expanded="false" aria-controls="wo-mech-front-brakes">Front Brakes</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-front-brakes-svc" name="wo-mech-front-brakes-svc" checked>
+                            <label for="wo-mech-front-brakes-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.0</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-front-brakes-hrs" name="wo-mech-front-brakes-hrs" checked>
+                            <label for="wo-mech-front-brakes-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-front-brakes-labor" name="wo-mech-front-brakes-labor" checked>
+                            <label for="wo-mech-front-brakes-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-front-brakes-parts" name="wo-mech-front-brakes-parts" checked>
+                              <label for="wo-mech-front-brakes-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-disabled.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h3>$100.00</h3>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          <button type="button" class="btn btn--sm">NOT COMPLETED</button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--content table__row--muted">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-down color-danger"></i><span class="screen-reader-text">No</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-mech-ac-svc" aria-expanded="false" aria-controls="wo-mech-ac-svc">A/C Service</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-ac-svc-svc" name="wo-mech-ac-svc-svc">
+                            <label for="wo-mech-ac-svc-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.0</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-ac-svc-hrs" name="wo-mech-ac-svc-hrs">
+                            <label for="wo-mech-ac-svc-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-mech-ac-svc-labor" name="wo-mech-ac-svc-labor">
+                            <label for="wo-mech-ac-svc-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-ac-svc-parts" name="wo-mech-ac-svc-parts">
+                              <label for="wo-mech-ac-svc-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-danger.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner"></div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--content">
+                        <div class="table__cell work-order-cell--accept">
+                          <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                        </div>
+                        <div class="table__cell work-order-cell--svc">
+                          <div class="inner">
+                            <span class="text work-order__toggle" data-target="#wo-mech-front-brakes" aria-expanded="false" aria-controls="wo-mech-front-brakes">Front Brakes</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-front-brakes-svc" name="wo-mech-front-brakes-svc" checked>
+                              <label for="wo-mech-front-brakes-svc"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--hrs">
+                          <div class="inner">
+                            <span class="text">1.0</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-front-brakes-hrs" name="wo-mech-front-brakes-hrs" checked>
+                              <label for="wo-mech-front-brakes-hrs"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--labor">
+                          <div class="inner">
+                            <span class="text">$100.00</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-front-brakes-labor" name="wo-mech-front-brakes-labor" checked>
+                              <label for="wo-mech-front-brakes-labor"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--parts">
+                          <div class="inner">
+                            <span class="text">$0.00</span>
+                            <div class="block">
+                              <div class="checkbox">
+                                <input type="checkbox" value="0" id="wo-mech-front-brakes-parts" name="wo-mech-front-brakes-parts" checked>
+                                <label for="wo-mech-front-brakes-parts"></label>
+                              </div>
+                              <img src="dist/img/parts-disabled.jpg" alt="">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--total">
+                          <div class="inner">
+                            <h3>$100.00</h3>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--act">
+                          <div class="inner">
+                            <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                            <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                            <button type="button" class="btn btn--sm">NOT COMPLETED</button>
+                          </div>
+                        </div>
+                      </div><!-- /.table__row--content -->
+  
+                      <div class="table__row table__row--content table__row--muted">
+                        <div class="table__cell work-order-cell--accept">
+                          <div class="inner"><i class="icon-thumb-down color-danger"></i><span class="screen-reader-text">No</span></div>
+                        </div>
+                        <div class="table__cell work-order-cell--svc">
+                          <div class="inner">
+                            <span class="text work-order__toggle" data-target="#wo-mech-ac-svc" aria-expanded="false" aria-controls="wo-mech-ac-svc">A/C Service</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-ac-svc-svc" name="wo-mech-ac-svc-svc">
+                              <label for="wo-mech-ac-svc-svc"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--hrs">
+                          <div class="inner">
+                            <span class="text">1.0</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-ac-svc-hrs" name="wo-mech-ac-svc-hrs">
+                              <label for="wo-mech-ac-svc-hrs"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--labor">
+                          <div class="inner">
+                            <span class="text">$100.00</span>
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-mech-ac-svc-labor" name="wo-mech-ac-svc-labor">
+                              <label for="wo-mech-ac-svc-labor"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--parts">
+                          <div class="inner">
+                            <span class="text">$0.00</span>
+                            <div class="block">
+                              <div class="checkbox">
+                                <input type="checkbox" value="0" id="wo-mech-ac-svc-parts" name="wo-mech-ac-svc-parts">
+                                <label for="wo-mech-ac-svc-parts"></label>
+                              </div>
+                              <img src="dist/img/parts-danger.jpg" alt="">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table__cell work-order-cell--total">
+                          <div class="inner"></div>
+                        </div>
+                        <div class="table__cell work-order-cell--act">
+                          <div class="inner">
+                            <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                            <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          </div>
+                        </div>
+                      </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--footer">
+                      <div class="table__cell work-order-cell--label">
+                        <div class="inner">
+                          <h4>Mechanical Total</h4>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">7.0</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$640.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$20.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h2>$660.00</h2>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--footer -->
+                  </div>
+                </div>
+              </section><!-- /.work-order-mechanical -->
+
+              <section class="work-order-body collapsible collapsed">
+                <header class="collapsible__header">
+                  <h2 class="collapsible__toggle" data-target="#work-order-body" aria-expanded="false" aria-controls="work-order-body" role="button">Body Shop</h2>
+                  <button type="button" class="btn btn--xs btn--action add-service--toggle">ADD SERVICE</button>
+                  <a href="#" class="print-link" role="button">Print<i class="icon-print"></i></a>
+                  <h3 class="work-order-total--header">$100.00</h3>
+                </header>
+                <div id="work-order-body" class="collapsible__content" style="display: none;">
+                  <div class="work-order-table table">
+                    <div class="table__row table__row--header">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner">Accept</div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">Service</div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">Labor Hours</div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">Labor</div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">Parts</div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">Total</div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner"></div>
+                      </div>
+                    </div><!-- /.table__row--header -->
+
+                    <div class="table__row table__row--content">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-body-rear-brakes" aria-expanded="false" aria-controls="wo-body-rear-brakes">Rear Brakes</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-body-rear-brakes-svc" name="wo-body-rear-brakes-svc">
+                            <label for="wo-body-rear-brakes-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.5</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-body-rear-brakes-hrs" name="wo-body-rear-brakes-hrs">
+                            <label for="wo-body-rear-brakes-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-body-rear-brakes-labor" name="wo-body-rear-brakes-labor">
+                            <label for="wo-body-rear-brakes-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-body-rear-brakes-parts" name="wo-body-rear-brakes-parts">
+                              <label for="wo-body-rear-brakes-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-disabled.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h3>$100.00</h3>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          <button type="button" class="btn btn--sm btn--callout">NOT COMPLETED</button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--footer">
+                      <div class="table__cell work-order-cell--label">
+                        <div class="inner">
+                          <h4>Body Shop Total</h4>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.5</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h2>$100.00</h2>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--footer -->
+                  </div>
+                </div>
+              </section><!-- /.work-order-body -->
+
+              <section class="work-order-detail collapsible collapsed">
+                <header class="collapsible__header">
+                  <h2 class="collapsible__toggle" data-target="#work-order-detail" aria-expanded="false" aria-controls="work-order-detail" role="button">Detail</h2>
+                  <button type="button" class="btn btn--xs btn--action add-service--toggle">ADD SERVICE</button>
+                  <a href="#" class="print-link" role="button">Print<i class="icon-print"></i></a>
+                  <h3 class="work-order-total--header">$200.00</h3>
+                </header>
+                <div id="work-order-detail" class="collapsible__content" style="display: none;">
+                  <div class="work-order-table table">
+                    <div class="table__row table__row--header">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner">Accept</div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">Service</div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">Labor Hours</div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">Labor</div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">Parts</div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">Total</div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner"></div>
+                      </div>
+                    </div><!-- /.table__row--header -->
+
+                    <div class="table__row table__row--content">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-detail-rear-brakes" aria-expanded="false" aria-controls="wo-detail-rear-brakes">Rear Brakes</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-rear-brakes-svc" name="wo-detail-rear-brakes-svc">
+                            <label for="wo-detail-rear-brakes-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.5</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-rear-brakes-hrs" name="wo-detail-rear-brakes-hrs">
+                            <label for="wo-detail-rear-brakes-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-rear-brakes-labor" name="wo-detail-rear-brakes-labor">
+                            <label for="wo-detail-rear-brakes-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-detail-rear-brakes-parts" name="wo-detail-rear-brakes-parts">
+                              <label for="wo-detail-rear-brakes-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-disabled.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h3>$100.00</h3>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          <button type="button" class="btn btn--sm btn--callout">NOT COMPLETED</button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--content">
+                      <div class="table__cell work-order-cell--accept">
+                        <div class="inner"><i class="icon-thumb-up color-action"></i><span class="screen-reader-text">Yes</span></div>
+                      </div>
+                      <div class="table__cell work-order-cell--svc">
+                        <div class="inner">
+                          <span class="text work-order__toggle" data-target="#wo-detail-front-brakes" aria-expanded="false" aria-controls="wo-detail-front-brakes">Front Brakes</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-front-brakes-svc" name="wo-detail-front-brakes-svc" checked>
+                            <label for="wo-detail-front-brakes-svc"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">1.0</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-front-brakes-hrs" name="wo-detail-front-brakes-hrs" checked>
+                            <label for="wo-detail-front-brakes-hrs"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$100.00</span>
+                          <div class="checkbox">
+                            <input type="checkbox" value="0" id="wo-detail-front-brakes-labor" name="wo-detail-front-brakes-labor" checked>
+                            <label for="wo-detail-front-brakes-labor"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                          <div class="block">
+                            <div class="checkbox">
+                              <input type="checkbox" value="0" id="wo-detail-front-brakes-parts" name="wo-detail-front-brakes-parts" checked>
+                              <label for="wo-detail-front-brakes-parts"></label>
+                            </div>
+                            <img src="dist/img/parts-disabled.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h3>$100.00</h3>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--act">
+                        <div class="inner">
+                          <button type="button" class="btn btn--border"><i class="icon-comment"></i><span class="screen-reader-text">Comments</span></button>
+                          <button type="button" class="btn btn--border"><i class="icon-trash"></i><span class="screen-reader-text">Delete</span></button>
+                          <button type="button" class="btn btn--sm">NOT COMPLETED</button>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--content -->
+
+                    <div class="table__row table__row--footer">
+                      <div class="table__cell work-order-cell--label">
+                        <div class="inner">
+                          <h4>Detail Total</h4>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--hrs">
+                        <div class="inner">
+                          <span class="text">2.5</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--labor">
+                        <div class="inner">
+                          <span class="text">$200.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--parts">
+                        <div class="inner">
+                          <span class="text">$0.00</span>
+                        </div>
+                      </div>
+                      <div class="table__cell work-order-cell--total">
+                        <div class="inner">
+                          <h2>$200.00</h2>
+                        </div>
+                      </div>
+                    </div><!-- /.table__row--footer -->
+                  </div>
+                </div>
+              </section><!-- /.work-order-detail -->
+            </div>
+            
+            <div class="work-order-table work-order--totals table">
+              <div class="table__row table__row--footer">
+                <div class="table__cell work-order-cell--label">
+                  <div class="inner">
+                    <span class="text work-order__toggle" data-target="#wo-totals" aria-expanded="false" aria-controls="wo-totals">Totals</span>
+                    <h2 class="work-order-total--header">$960.00</h2>
+                  </div>
+                </div>
+                <div class="table__cell work-order-cell--hrs">
+                  <div class="inner">
+                    <span class="text">11.0</span>
+                  </div>
+                </div>
+                <div class="table__cell work-order-cell--labor">
+                  <div class="inner">
+                    <span class="text">$940.00</span>
+                  </div>
+                </div>
+                <div class="table__cell work-order-cell--parts">
+                  <div class="inner">
+                    <span class="text">$20.00</span>
+                  </div>
+                </div>
+                <div class="table__cell work-order-cell--total">
+                  <div class="inner">
+                    <h2>$960.00</h2>
+                  </div>
+                </div>
+                <div class="table__cell work-order-cell--act">
+                  <div class="inner">
+                    <button type="button" class="btn btn--detail btn--icon"><i class="icon-check"></i>CONFIRM COSTS</button>
+                  </div>
+                </div>
+              </div><!-- /.table__row--footer -->
+            </div><!--  /.work-order--totals -->
+            
+            <div class="work-order--actions">
+              <div class="btn-group">
+                <button type="button" class="btn btn--dark"><i class="icon-comment-fill"></i>NOTES (2)</button>
+                <button type="button" class="btn btn--dark"><i class="icon-camera"></i>PHOTOS</button>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn--callout btn--icon"><i class="icon-check"></i>SEND FOR APPROVAL</button>
+              </div>
+            </div>
+          </div><!-- /.work-order-breakdown -->
+        </div>
+      </main><!-- /.main -->
+      
+      <footer id="footer" class="footer" role="contentinfo">
+        <div class="container">
+          <p class="copyright">&copy; 2018 Green Cloud Process, LLC</p>
+        </div>
+      </footer><!-- /.footer -->
+      
+    </div><!-- /.site -->
+    
+    <!-- External JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="dist/js/app.js"></script>
+  </body>
+</html>

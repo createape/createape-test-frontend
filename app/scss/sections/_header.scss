@@ -1,0 +1,69 @@
+.banner {
+  padding: ($spacer * .5) ($spacer * .625);
+  background-color: color-level(base, 2.3);
+  
+  & > .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__block {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    
+    &--r {
+      justify-content: flex-end;
+    }
+    
+    @include breakpoint-from(lg) {
+      width: 25%;
+    }
+  }
+  
+  @include breakpoint-from(md) {
+    padding: ($spacer * 1.125) ($spacer * 1.5);
+  }
+}
+
+.brand {
+  display: block;
+  width: 100%;
+  max-width: $navbar-logo-width;
+  padding: 0 ($navbar-logo-padding / 2);
+  
+  @include breakpoint-from(md) {
+    padding: 0;
+  }
+}
+
+.search-bar {
+  margin-right: ($spacer * 1.125);
+  
+  .form__item {
+    &::after {
+      color: $white;
+    }
+  }
+
+  .form-field {
+    background-color: transparent;
+    border: 0;
+    border-bottom: .125rem solid color-level(base, -2.3);
+    color: $white;
+    
+    &:focus {
+      outline: 0;
+      border-bottom-color: color-level(base, -7.5);
+    }
+    
+    @include input-ph($searchbar-ph-color);
+  }
+  
+  @include breakpoint-to(lg) {
+    .banner & {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+.collapsible {
+  position: relative;
+  background-color: $collapsible-bg-color;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,.14);
+  margin-bottom: ($collapsible-v-spacing * .25);
+  @include anim(all, .25s);
+  
+  @include breakpoint-to(lg) {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12);
+  }
+  
+  @include breakpoint-from(sm) {
+    margin-bottom: ($collapsible-v-spacing * .4);
+  }
+  
+  @include breakpoint-from(md) {
+    margin-bottom: ($collapsible-v-spacing * .5);
+  }
+  
+  @include breakpoint-from(lg) {
+    padding: $collapsible-padding-y $collapsible-padding-x;
+  }
+  
+  @include breakpoint-from(xl) {
+    margin-bottom: ($collapsible-v-spacing * .7);
+  }
+  
+  @include breakpoint-from(mg) {
+    margin-bottom: $collapsible-v-spacing;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &.collapsible--alt {
+    padding: 0;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,.05);
+    margin-bottom: 1rem;
+    
+    &.collapsed {
+      margin-bottom: .375rem;
+    }
+  }
+}
+
+.collapsible__header {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  @include anim(all, .25s);
+
+  &.is-open {
+    padding: $collapsible-header-padding-y $collapsible-header-padding-x;
+    background-color: $collapsible-bg-color-open;
+  }
+  
+  @include breakpoint-to(lg) {
+    padding: ($collapsible-header-padding-y * 1.2) $collapsible-header-padding-x;
+  }
+  
+  .collapsible--alt & {
+    background-color: color-level(muted, -5);
+    border-top: 1px solid $white;
+    padding: .75rem .875rem;
+    
+    &.is-open {
+      background-color: $white;
+    }
+  }
+}
+
+.collapsible__toggle {
+  position: relative;
+  flex-grow: 1;
+  padding-right: ($spacer * 2.875);
+  padding-left: 1em;
+  font-size: $collapsible-header-font-size;
+  @include anim(all, .25s);
+
+  &::before {
+    @include caret('triangle');
+  }
+  
+  .is-open > & {
+    font-size: ($collapsible-header-font-size * 1.1675);
+    color: $collapsible-bg-color;
+    flex-grow: 0;
+
+    &::before {
+      transform: translateY(-50%) rotate(90deg);
+      border-left: $collapsible-caret-size solid $collapsible-bg-color;
+    }
+    
+    @include breakpoint-to(md) {
+      font-size: $collapsible-header-font-size;
+    }
+  }
+  
+  .collapsible--alt & {
+    font-weight: 300;
+  }
+  
+  .collapsible--alt .is-open > & {
+    font-size: 1.125rem;
+    color: $black;
+    font-weight: bold;
+    
+    &::before {
+      border-left-color: $black;
+    }
+  }
+}
+
+.collapsible__content {
+  overflow-y: hidden;
+  background-color: $collapsible-content-bg-color;
+  
+  @include breakpoint-to(lg) {
+    padding: .5625rem .625rem;
+  }
+}

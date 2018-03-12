@@ -1,0 +1,91 @@
+.table__row {
+  display: flex;
+  background-color: $white;
+  
+  &--header {
+    background-color: $table-header-bg-color;
+    height: $table-header-height;
+    font-size: $table-font-size;
+    font-weight: $table-header-font-weight;
+    color: $table-header-color;
+    text-transform: uppercase;
+    border-right: 1px solid $table-header-bg-color;
+    border-left: 1px solid $table-header-bg-color;
+    
+    .table--mini & {
+      height: 2.65rem;
+    }
+  }
+  
+  &--content {
+    border: 1px solid $table-border-color;
+    border-top: 0;
+    font-size: $table-font-size;
+    font-weight: $table-font-weight;
+    background-color: $table-bg-color;
+    
+    &.table__row--muted {
+      background-color: app-color('muted');
+    }
+    
+    .table--mini & {
+      font-size: .875rem;
+      font-weight: normal;
+    }
+  }
+  
+  &--footer {
+    border-top: $table-footer-border-width solid $table-footer-border-color;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    font-size: ($table-font-size * 1.5);
+    font-weight: $table-footer-font-weight;
+  }
+}
+
+.table__cell {
+  flex-grow: 1;
+  padding: $table-cell-padding-y $table-cell-padding-x;
+  border-right: 1px solid $table-border-color;
+  
+  &:last-child {
+    border: 0;
+  }
+
+  & > .inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .table__row--header > & {
+    border-color: lighten($table-header-bg-color, 25%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+    &:last-child {
+      border: 0;
+    }
+  }
+  
+  .table__row--footer > & {
+    padding-top: $table-footer-padding-y;
+    padding-bottom: $table-footer-padding-y;
+  }
+  
+  .table--mini & {
+    border-right: 0;
+    padding: .375rem .5rem;
+    
+    &:first-child {
+      border-right: 1px solid $table-border-color;
+    }
+  }
+  
+  .table--mini .table__row--header > & {
+    border-color: lighten($table-header-bg-color, 25%);
+  }
+}

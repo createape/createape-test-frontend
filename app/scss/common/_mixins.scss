@@ -1,0 +1,108 @@
+/*--------------------------------------------------------------
+# Animations
+--------------------------------------------------------------*/
+@mixin anim($prop, $time) {
+  transition: $prop $time ease-in-out;
+}
+
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+@mixin color-variant($parent, $color) {
+  .bg-#{$parent} {
+    background-color: $color;
+  }
+  .color-#{$parent} {
+    color: $color;
+  }
+}
+
+@mixin linear-gradient($direction, $from, $to) {
+  background: $from;
+  background: linear-gradient($direction, $from 0%, $to 100%);
+}
+
+/*--------------------------------------------------------------
+# Grids and breakpoints
+--------------------------------------------------------------*/
+@mixin breakpoint-from($breakpoint) {
+  $value: map-get($grid-breakpoints, $breakpoint);
+
+  @if $value != null {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin breakpoint-to($breakpoint) {
+  $value: map-get($grid-breakpoints, $breakpoint);
+
+  @if $value != null {
+    @media (max-width: ($value - 1)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin container-max-widths($widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint, $container-width in $widths {    
+    @include breakpoint-from($breakpoint) {
+      max-width: $container-width;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+@mixin input-ph($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  
+  &:-moz-placeholder {
+    color: $color;
+  }
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+@mixin caret($style) {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(0deg);
+  @include anim(all, .25s);
+  @if $style == 'triangle' {
+    content: '';
+    border-top: $collapsible-caret-size solid transparent;
+    border-bottom: $collapsible-caret-size solid transparent;
+    border-left: $collapsible-caret-size solid $font-color-base;
+  }
+  @else if $style == 'icon' {
+    content: icons('arrow-right');
+    font-family: $icon-font;
+    font-size: 0.7145em;
+  }
+}

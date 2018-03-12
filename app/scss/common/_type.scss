@@ -1,0 +1,36 @@
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $font-color-base;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+@each $heading, $size in $headings-size {
+  #{$heading} {
+    font-size: $size;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+small {
+	font-size: 80%;
+}
+
+big {
+  font-size: 120%;
+}

@@ -1,0 +1,11 @@
+.footer {
+  padding-top: $footer-padding-y;
+  padding-bottom: ($footer-padding-y * 3.75);
+  font-size: $footer-font-size;
+  text-align: center;
+  
+  @include breakpoint-to(lg) {
+    padding-top: 0;
+    padding-bottom: ($footer-padding-y * 2);
+  }
+}

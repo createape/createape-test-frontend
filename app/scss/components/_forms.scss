@@ -1,0 +1,134 @@
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.form {
+  & > .form__item {
+    margin-bottom: $form-field-margin;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.form__item {
+  position: relative;
+  font-size: inherit;
+  
+  &--search {
+    &::after {
+      content: icons("search");
+      display: block;
+      position: absolute;
+      top: $form-field-padding-y;
+      right: .5rem;
+      font-family: $icon-font;
+      font-size: 1.125em;
+      line-height: 1;
+    }
+  }
+}
+
+.form-field {
+  display: block;
+  width: 100%;
+  padding: $form-field-padding-y $form-field-padding-x;
+  background-color: $white;
+  border: 1px solid $gray;
+  border-radius: 0;
+  font-size: 1em;
+  @include anim(all, .25s);
+}
+
+/*--------------------------------------------------------------
+# Custom Checkbox
+--------------------------------------------------------------*/
+.checkbox {
+  font-size: 1rem;
+	width: $checkbox-width;
+	height: $checkbox-height;
+  display: inline-block;
+  vertical-align: middle;
+  
+  input[type=checkbox] {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    border: $checkbox-border-width solid $checkbox-color;
+    
+    &::after {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: $checkbox-check-width;
+      height: $checkbox-check-height;
+      background: transparent;
+      top: (($checkbox-height - $checkbox-check-height) / 2) - ($checkbox-border-width * 2);
+      left: (($checkbox-width - $checkbox-check-width) / 2) - $checkbox-border-width;
+      border: $checkbox-check-size solid $checkbox-color;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+    }
+    
+    &:hover {
+      &::after {
+        opacity: .35;
+      }
+    }
+  }
+    
+  input[type=checkbox]:checked {
+    & + label {
+      border-color: $checkbox-color-checked;
+      
+      &::after {
+        opacity: 1;
+        border-color: $checkbox-color-checked;
+      }
+    }
+  }
+  
+  &--square {
+    label {
+      &::after {
+        display: block;
+        border: 0;
+        width: ($checkbox-check-size * 3);
+        height: ($checkbox-check-size * 3);
+        transform: rotate(0deg);
+        background-color: $checkbox-color;
+        top: ($checkbox-check-width - $checkbox-check-height);
+        left: ($checkbox-check-width - $checkbox-check-height);
+      }
+    }
+    
+    input[type=checkbox]:checked {
+      & + label {
+        &::after {
+          opacity: 1;
+          background-color: $checkbox-color-checked;
+        }
+      }
+    }
+  }
+}

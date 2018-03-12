@@ -1,0 +1,211 @@
+/*--------------------------------------------------------------
+# Color System
+--------------------------------------------------------------*/
+$white: #fff;
+$black: #000;
+$gray: #777;
+$gray-muted: #ededed;
+$gray-dark: #8d8d8d;
+$blue-primary: #386da0;
+$blue-secondary: #304f7c;
+$blue-dark: #273f63;
+$green-primary: #78c644;
+$green-secondary: #63b111;
+$green-dark: #0f5100;
+$orange-primary: #d77f17;
+$orange-dark: #a22b01;
+$red: #bd0008;
+
+$app-colors: (
+  detail: $blue-primary,
+  accent: $green-primary,
+  action: $green-secondary,
+  callout: $orange-primary,
+  dark: $gray-dark,
+  base: $gray,
+  muted: $gray-muted,
+  success: $green-secondary,
+  danger: $red
+);
+
+$color-interval: 5%;
+
+/*--------------------------------------------------------------
+# Grid System
+--------------------------------------------------------------*/
+$grid-columns: 12;
+
+$grid-gutter-width: 40px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  mg: 1480px
+);
+
+$container-max-widths: (
+  xl: 1100px,
+  mg: 1380px
+);
+
+/*--------------------------------------------------------------
+# Spacing
+--------------------------------------------------------------*/
+$spacer: 1rem;
+
+/*--------------------------------------------------------------
+# Type
+--------------------------------------------------------------*/
+$font-family-base: 'Roboto', "Helvetica Neue", Arial, sans-serif;
+$line-height-base: 1.2;
+$font-size-base: 1rem;
+$font-color-base: $black;
+
+$headings-size: (
+  h1: 1.5rem,
+  h2: 1.125rem,
+  h3: 1rem,
+  h4: .875rem,
+  h5: .75rem,
+  h6: .6875rem
+);
+
+/*--------------------------------------------------------------
+# Icons
+--------------------------------------------------------------*/
+$icon-font: 'TestFont';
+
+$icons: (
+  user: "\e800",
+  eye: "\e801",
+  cog: "\e802",
+  wrench: "\e803",
+  print: "\e804",
+  search: "\e805",
+  thumb-up: "\e806",
+  thumb-down: "\e807",
+  check: "\e808",
+  arrow-down: "\e809",
+  arrow-right: "\e80a",
+  comment: "\f0e5",
+  plus-circle: "\e80b",
+  comment-fill: "\e80c",
+  camera: "\e80d",
+  ellips: "\f141",
+  trash: "\f1f8"
+);
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+$btn-font-weight: 700;
+$btn-padding-y: 1.075em;
+$btn-padding-x: 1.875em;
+$btn-border-size: -.275em;
+$btn-border-radius: 0;
+$btn-bg-color: color-level(muted, 2.4);
+$btn-border-padding-y: .55rem;
+$btn-border-padding-x: .75rem;
+$btn-border-color: color-level(base, -4);
+$btn-group-spacing: .75em;
+$btn-group-margin-y: .75rem;
+$btn-icon-text-spacing: .7145em;
+
+$buttons: detail,
+          action,
+          callout,
+          dark;
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+$form-field-margin: .75rem;
+$form-field-padding-y: .625rem;
+$form-field-padding-x: .75rem;
+$form-field-ph-color: color-level(base, -5);
+
+$checkbox-width: 1.875em;
+$checkbox-height: 1.875em;
+$checkbox-border-width: .125em;
+$checkbox-color: color-level(base, -11.3);
+$checkbox-check-width: 1em;
+$checkbox-check-height: .5625em;
+$checkbox-check-size: .25em;
+$checkbox-color-checked: app-color('action');
+
+/*--------------------------------------------------------------
+# Tables
+--------------------------------------------------------------*/
+$table-bg-color: $white;
+$table-header-bg-color: $blue-secondary;
+$table-header-color: $white;
+$table-header-font-weight: 900;
+$table-header-height: 3.25rem;
+$table-cell-padding-y: .75rem;
+$table-cell-padding-x: 1rem;
+$table-border-color: color-level(base, -12.5);
+$table-font-size: .75rem;
+$table-font-weight: 500;
+$table-footer-border-color: $black;
+$table-footer-border-width: 3px;
+$table-footer-font-weight: 900;
+$table-footer-padding-y: 1.625rem;
+
+/*--------------------------------------------------------------
+# Menus
+--------------------------------------------------------------*/
+$navbar-toggle-padding-x: 1rem;
+$navbar-toggle-padding-y: .75rem;
+$navbar-toggle-text-spacing: .5rem;
+
+$hamburger-padding-x: 0;
+$hamburger-padding-y: 0;
+$hamburger-layer-width: .75rem;
+$hamburger-layer-height: .125rem;
+$hamburger-layer-spacing: .125rem;
+$hamburger-layer-color: $white;
+$hamburger-layer-border-radius: .125rem;
+
+$sidebar-nav-color: action;
+$sidebar-nav-padding-x: .5em;
+$sidebar-nav-item-padding-y: .5em;
+$sidebar-nav-item-padding-x: 1em;
+$sidebar-nav-font-color: $white;
+$sidebar-nav-font-weight: 500;
+
+/*--------------------------------------------------------------
+# Collapsible
+--------------------------------------------------------------*/
+$collapsible-bg-color: $white;
+$collapsible-bg-color-open: app-color('detail');
+$collapsible-padding-y: 1.125rem;
+$collapsible-padding-x: 1.5rem;
+$collapsible-header-font-size: 1.125rem;
+$collapsible-header-padding-y: .625rem;
+$collapsible-header-padding-x: 1.125rem;
+$collapsible-caret-size: .3333em;
+$collapsible-print-font-size: .6875rem;
+$collapsible-print-icon-size: 1.6365em;
+$collapsible-content-bg-color: color-level(muted, -5);
+$collapsible-v-spacing: 2.5rem;
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+$navbar-logo-width: 22rem;
+$navbar-logo-padding: ($spacer * 4);
+$searchbar-ph-color: color-level(base, -9);
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+$content-padding-y: 1.625rem;
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+$footer-padding-y: 1.5rem;
+$footer-font-size: .75rem;

@@ -1,0 +1,32 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	background: color-level(muted, 1);
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+figure {
+	margin: 0;
+}
+
+table {
+	width: 100%;
+}
+
+[class*="toggle"] {
+  cursor: pointer;
+  position: relative;
+}

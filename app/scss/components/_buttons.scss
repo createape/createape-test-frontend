@@ -1,0 +1,165 @@
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  border: 0;
+  background: $btn-bg-color;
+  padding: $btn-padding-y $btn-padding-x;
+  font-size: ($font-size-base * .875);
+  color: $white;
+  border-radius: $btn-border-radius;
+  position: relative;
+  text-decoration: none;
+  @include anim(all, .25s);
+  
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-right: $btn-icon-text-spacing;
+  }
+  
+  @include breakpoint-to(mg) {
+    font-size: ($font-size-base * .8125);
+  }
+
+  @include breakpoint-to(md) {
+    font-size: ($font-size-base * .75);
+  }
+  
+  &--xs {
+    font-size: ($font-size-base * .6875);
+    
+    @include breakpoint-to(mg) {
+      font-size: ($font-size-base * .625);
+    }
+    
+    @include breakpoint-to(md) {
+      font-size: ($font-size-base * .5625);
+    }
+  }
+  
+  &--sm {
+    font-size: ($font-size-base * .75);
+    
+    @include breakpoint-to(mg) {
+      font-size: ($font-size-base * .6875);
+    }
+    
+    @include breakpoint-to(md) {
+      font-size: ($font-size-base * .625);
+    }
+  }
+  
+  &--lg {
+    font-size: ($font-size-base * .9375);
+    
+    @include breakpoint-to(mg) {
+      font-size: ($font-size-base * .875);
+    }
+    
+    @include breakpoint-to(md) {
+      font-size: ($font-size-base * .8125);
+    }
+  }
+  
+  @each $variant in $buttons {
+    $gradient-from: color-level(#{$variant}, -3.5);
+    $gradient-to: color-level(#{$variant}, 4);
+    $btn-edge: color-level(#{$variant}, 7.5);
+
+    &--#{$variant} {
+      @include linear-gradient(180deg, $gradient-from, $gradient-to);
+      box-shadow: inset 0 $btn-border-size 0 0 $btn-edge;
+      
+      &:hover,
+      &:focus {
+        box-shadow: inset 0 $btn-border-size 0 0 darken($btn-edge, 5%);
+      }
+      
+      &:hover {
+        opacity: .85;
+      }
+      
+      &:focus {
+        outline: 0;
+      }
+      
+      &.btn--icon {
+        [class^="icon-"],
+        [class*=" icon-"] {
+          border-color: $btn-edge;
+        }
+        
+        &:hover,
+        &:focus {
+          [class^="icon-"],
+          [class*=" icon-"] {
+            border-color: darken($btn-edge, 5%);
+          }
+        }
+      }
+    }
+  }
+  
+  &--border {
+    padding: $btn-border-padding-y $btn-border-padding-x;
+    font-size: $font-size-base;
+    color: $btn-border-color;
+    border: 1px solid $btn-border-color;
+    background-color: transparent;
+    
+    [class^="icon-"],
+    [class*=" icon-"] {
+      margin: 0;
+    }
+    
+    &:hover {
+      background-color: $btn-border-color;
+      color: $white;
+    }
+    
+    @include breakpoint-to(mg) {
+      font-size: ($font-size-base * .875);
+    }
+    
+    @include breakpoint-to(md) {
+      font-size: ($font-size-base * .8125);
+    }
+  }
+  
+  &--icon {
+    [class^="icon-"],
+    [class*=" icon-"] {
+      position: absolute;
+      padding-left: .875em;
+      padding-right: .875em;
+      border-right: 1px solid;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      margin: 0;
+    }
+  }
+}
+
+.btn-group {
+  display: flex;
+  margin-bottom: $btn-group-margin-y;
+  
+  .btn {
+    height: 100%;
+    flex-grow: 1;
+    margin-right: $btn-group-spacing;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

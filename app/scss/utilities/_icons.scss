@@ -1,0 +1,22 @@
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: $icon-font;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: $font-size-base;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@each $icon, $unicode_value in $icons {
+  .icon-#{$icon}:before {
+    content: $unicode_value;
+  }
+}

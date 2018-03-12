@@ -1,0 +1,16 @@
+.content {
+  padding-bottom: ($content-padding-y * .875);
+  
+  @include breakpoint-from(lg) {
+    padding-top: $content-padding-y;
+    padding-bottom: ($content-padding-y * 1.5385);
+    
+    &__block {
+      margin-bottom: 2rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

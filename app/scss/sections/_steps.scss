@@ -1,0 +1,214 @@
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+$step-height: 2.875rem;
+$step-font-size: 1.125rem;
+$step-font-weight: 500;
+$step-icon-size: .6875rem;
+$step-icon-wrap: 2.185em;
+$step-padding-l: 9%;
+$step-item-space: 1.375rem;
+$step-color: accent;
+$step-active-deco-width: 1.625rem;
+$step-active-marker-height: 1.625rem;
+
+/*--------------------------------------------------------------
+# Rule-sets
+--------------------------------------------------------------*/
+.steps {
+  padding-top: $step-active-marker-height;
+  
+  @include breakpoint-to(lg) {
+    padding-top: 0;
+  }
+  
+  & > .inner {
+    background-color: $white;
+    box-shadow: 0 6px 10px 0 rgba(0,23,71,.06);
+    
+    @include breakpoint-from(lg) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.steps-indicator {
+  flex-basis: 75%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.steps__step {
+  display: block;
+  flex-grow: 1;
+  flex-basis: 0;
+  position: relative;
+  
+  & > .inner {
+    display: flex;
+    align-items: center;
+    height: $step-height;
+    padding-left: $step-padding-l;
+    
+    @include breakpoint-to(mg) {
+      height: ($step-height * .9545);
+    }
+  }
+  
+  &.is-active {
+    padding-right: $step-active-deco-width;
+    padding-left: $step-active-deco-width;
+    
+    @include breakpoint-to(lg) {
+      padding-right: ($step-active-deco-width * .7695);
+      padding-left: ($step-active-deco-width * .7695);
+    }
+    
+    & > .inner {
+      background-color: app-color($step-color);
+    }
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+    }
+    
+    &::before {
+      left: 0;
+      border-top: ($step-height / 2) solid app-color($step-color);
+      border-bottom: ($step-height / 2) solid app-color($step-color);
+      border-left: $step-active-deco-width solid transparent;
+      
+      @include breakpoint-to(mg) {
+        border-top: (($step-height / 2) * .9545) solid app-color($step-color);
+        border-bottom: (($step-height / 2) * .9545) solid app-color($step-color);
+      }
+      
+      @include breakpoint-to(lg) {
+        border-left: ($step-active-deco-width * .7695) solid transparent;
+      }
+    }
+    
+    &::after {
+      right: 0;
+      border-top: ($step-height / 2) solid transparent;
+      border-bottom: ($step-height / 2) solid transparent;
+      border-left: $step-active-deco-width solid app-color($step-color);
+      
+      @include breakpoint-to(mg) {
+        border-top: (($step-height / 2) * .9445) solid transparent;
+        border-bottom: (($step-height / 2) * .9445) solid transparent;
+      }
+      
+      @include breakpoint-to(lg) {
+        border-left: ($step-active-deco-width * .7695) solid app-color($step-color);
+      }
+    }
+    
+    &:first-child {
+      padding-left: 0;
+      
+      &::before {
+        content: none;
+      }
+    }
+  }
+  
+  @include breakpoint-to(sm) {
+    &:not(.is-active) {
+      flex-grow: 0;
+      
+      & > .inner {
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+.step__icon {
+  display: inline-block;
+  background-color: app-color($step-color);
+  border-radius: 50%;
+  width: $step-icon-wrap;
+  height: $step-icon-wrap;
+  position: relative;
+  font-size: $step-icon-size;
+  
+  &::before {
+    color: $white;
+    width: auto;
+    line-height: 1.25;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .is-active & {
+    background-color: color-level($step-color, 6.5);
+  }
+}
+
+.step__text {
+  font-size: $step-font-size;
+  font-weight: $step-font-weight;
+  line-height: 1;
+  padding-left: $step-item-space;
+  
+  .is-active & {
+    color: $white;
+  }
+  
+  @include breakpoint-to(mg) {
+    font-size: ($step-font-size * .8895);
+  }
+  
+  @include breakpoint-to(xl) {
+    font-size: ($step-font-size * .7875);
+    padding-left: ($step-item-space * .75);
+  }
+  
+  @include breakpoint-to(sm) {
+    padding-left: ($step-item-space * .5454);
+    
+    .steps__step:not(.is-active) & {
+      display: none;
+    }
+  }
+}
+
+.step-active-marker {
+  height: $step-active-marker-height;
+  width: auto;
+  position: absolute;
+  top: -#{$step-active-marker-height};
+  left: 50%;
+  transform: translateX(-50%);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  
+  @include breakpoint-to(lg) {
+    display: none;
+  }
+}
+
+.steps__final {
+  .btn {
+    height: 100%;
+    min-width: 16.5rem;
+
+    @include breakpoint-to(xl) {
+      min-width: 13rem;
+    }
+
+    @include breakpoint-to(lg) {
+      display: none;
+    }
+  }
+}
