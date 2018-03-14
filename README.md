@@ -22,6 +22,8 @@ The only requirements, as far as libraries and tools go, are:
 
 You can use any other tools/libraries you want that can help you, but try not to depend too much on them.
 
+Please include this comment, just before the closing `</body>` tag: `<!-- Hi CreateApe! -->`
+
 There are only two JS interactions on the page that need to be coded are:
 1. The menu collapse on small formats.
 2. The pricing columns switch to a carousel on small formats.
